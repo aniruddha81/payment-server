@@ -4,7 +4,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --watch src/index.ts"
+    "dev": "bun --watch src/index.ts",
+    "build": "bun build ./src/index.ts --outdir dist --target bun",
+    "start": "NODE_ENV=production bun run src/index.ts",
+    "health-check": "bun -e \"const r=await fetch('http://127.0.0.1:8080/pay-api/meal-payment',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({studentId:'health',amount:1,totalQuantity:1,paymentMethod:'test'})}); if(!r.ok) process.exit(1);\""
   },
   "devDependencies": {
     "@types/bun": "latest",
