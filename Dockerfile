@@ -8,9 +8,8 @@ ENV PORT=8080
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile --production
 
-COPY tsconfig.json ./
 COPY src ./src
 
 EXPOSE 8080
 
-CMD ["bun", "run", "src/index.ts"]
+CMD ["bun", "src/index.ts"]
